@@ -8,3 +8,7 @@
 [submodule "llvm-prov"]
 	path = llvm-prov
 	url = https://github.com/cadets/llvm-prov
+[submodule "freebsd"]
+	path = freebsd
+	url = https://github.com/cadets/freebsd
+	branch = cadets

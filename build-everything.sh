@@ -82,7 +82,7 @@ export LLVM_PROV_MAKE=${TOP}/llvm-prov/scripts/llvm-prov-make
 cd ${TOP}/freebsd
 time ${LLVM_PROV_MAKE} -j32 \
 	KERNCONF=CADETS WITH_INSTRUMENT_BINARIES=yes \
-	buildworld buildkernel installworld installkernel \
+	buildworld buildkernel \
 	|| exit 1
 
 echo ""

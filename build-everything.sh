@@ -87,6 +87,7 @@ echo "Building FreeBSD in `${LLVM_PROV_MAKE} -V .OBJDIR`"
 time ${LLVM_PROV_MAKE} -j32 \
 	KERNCONF=CADETS WITH_INSTRUMENT_BINARIES=yes \
 	buildworld buildkernel \
+	2>&1 | tee ${LOGS}/freebsd-build.log \
 	|| exit 1
 
 echo ""

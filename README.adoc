@@ -1,0 +1,11 @@
+= CADETS build meta-repository
+
+This repository exists to pull in all of our FreeBSD build dependencies
+as git submodules.
+
+== Usage
+
+[source]
+----
+$ git clone --recursive https://github.com/cadets/build-meta
+----

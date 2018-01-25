@@ -82,12 +82,15 @@ export LLVM_PROV_MAKE=${TOP}/llvm-prov/scripts/llvm-prov-make
 cd ${TOP}/freebsd
 
 echo ""
-echo "Building FreeBSD in `${LLVM_PROV_MAKE} -V .OBJDIR`"
+echo "Building FreeBSD from `pwd`"
 
+LOGFILE=${LOGS}/freebsd-build.log
+
+echo "Building base system (logging to ${LOGFILE})... "
 time ${LLVM_PROV_MAKE} -j32 \
 	KERNCONF=CADETS WITH_INSTRUMENT_BINARIES=yes \
 	buildworld buildkernel \
-	2>&1 | tee ${LOGS}/freebsd-build.log \
+	> ${LOGFILE} \
 	|| exit 1
 
 echo ""

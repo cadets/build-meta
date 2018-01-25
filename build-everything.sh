@@ -87,12 +87,27 @@ echo "OBJDIR: `make -V .OBJDIR`"
 
 LOGFILE=${LOGS}/freebsd-build.log
 
-echo "Building base system (logging to ${LOGFILE})... "
+echo -n "Building base system (logging to ${LOGFILE})... "
 time ${LLVM_PROV_MAKE} -j32 \
 	KERNCONF=CADETS WITH_INSTRUMENT_BINARIES=yes \
 	buildworld buildkernel \
 	> ${LOGFILE} \
 	|| exit 1
+echo "done."
+
+echo -n "Building release tarballs (logging to ${LOGFILE}... "
+cd release
+nice ${LLVM_PROV_MAKE} \
+	-DNO_ROOT -DNOPORTS -DNOSRC -DNODOC \
+	KERNCONF=CADETS \
+	clean packagesystem \
+	>> ${LOGFILE} \
+	|| exit 1
+echo "done."
+
+echo -n "Copying release tarballs to ${TOP}/release... "
+cp `make -V .OBJDIR`/release/* ${TOP}/release/
+echo "done."
 
 echo ""
 echo "All done!"

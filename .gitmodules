@@ -2,3 +2,9 @@
 	path = llvm
 	url = https://github.com/cadets/llvm
 	branch = cadets
+[submodule "loom"]
+	path = loom
+	url = https://github.com/cadets/loom
+[submodule "llvm-prov"]
+	path = llvm-prov
+	url = https://github.com/cadets/llvm-prov

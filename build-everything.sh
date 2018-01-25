@@ -83,11 +83,12 @@ cd ${TOP}/freebsd
 
 echo ""
 echo "Building FreeBSD from `pwd`"
-echo "OBJDIR: `make -V .OBJDIR`"
 
 LOGFILE=${LOGS}/freebsd-build.log
+echo "Logging to: ${LOGFILE}"
+echo "OBJDIR: `make -V .OBJDIR`"
 
-echo -n "Building base system (logging to ${LOGFILE})... "
+echo -n "Building base system... "
 time ${LLVM_PROV_MAKE} -j32 \
 	KERNCONF=CADETS WITH_INSTRUMENT_BINARIES=yes \
 	buildworld buildkernel \
@@ -95,7 +96,7 @@ time ${LLVM_PROV_MAKE} -j32 \
 	|| exit 1
 echo "done."
 
-echo -n "Building release tarballs (logging to ${LOGFILE}... "
+echo -n "Building release tarballs... "
 cd release
 nice ${LLVM_PROV_MAKE} \
 	-DNO_ROOT -DNOPORTS -DNOSRC -DNODOC \

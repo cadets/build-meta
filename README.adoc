@@ -8,4 +8,6 @@ as git submodules.
 [source]
 ----
 $ git clone --recursive https://github.com/cadets/build-meta
+[wait awhile]
+$ ./build-everything.sh
 ----

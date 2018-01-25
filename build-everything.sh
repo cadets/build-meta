@@ -80,6 +80,10 @@ export LLVM_PROV_MAKE=${TOP}/llvm-prov/scripts/llvm-prov-make
 #export LLVM_PROV_LIB=${TOP}/llvm-prov/build/${BUILD_TYPE}/lib/LLVMProv.so
 
 cd ${TOP}/freebsd
+
+echo ""
+echo "Building FreeBSD in `${LLVM_PROV_MAKE} -V .OBJDIR`"
+
 time ${LLVM_PROV_MAKE} -j32 \
 	KERNCONF=CADETS WITH_INSTRUMENT_BINARIES=yes \
 	buildworld buildkernel \

@@ -83,6 +83,7 @@ cd ${TOP}/freebsd
 
 echo ""
 echo "Building FreeBSD from `pwd`"
+echo "OBJDIR: `make -V .OBJDIR`"
 
 LOGFILE=${LOGS}/freebsd-build.log
 

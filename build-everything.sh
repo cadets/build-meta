@@ -29,7 +29,7 @@ echo "done."
 echo -n "Building... "
 nice ninja || exit 1
 
-export PATH=${LLVM_PREFIX}}/bin:$PATH
+export PATH=${LLVM_PREFIX}/bin:$PATH
 
 
 #

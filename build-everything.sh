@@ -90,7 +90,7 @@ echo "OBJDIR: `make -V .OBJDIR`"
 
 echo -n "Building base system... "
 time ${LLVM_PROV_MAKE} -j32 \
-	KERNCONF=CADETS WITH_INSTRUMENT_BINARIES=yes \
+	KERNCONF=CADETS-LITE WITH_INSTRUMENT_BINARIES=yes \
 	buildworld buildkernel \
 	> ${LOGFILE} \
 	|| exit 1
@@ -100,7 +100,7 @@ echo -n "Building release tarballs... "
 cd release
 nice ${LLVM_PROV_MAKE} \
 	-DNO_ROOT -DNOPORTS -DNOSRC -DNODOC \
-	KERNCONF=CADETS \
+	KERNCONF=CADETS-LITE \
 	clean packagesystem \
 	>> ${LOGFILE} \
 	|| exit 1

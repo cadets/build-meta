@@ -12,3 +12,6 @@
 	path = freebsd
 	url = https://github.com/cadets/freebsd
 	branch = cadets
+[submodule "cadets-ci"]
+	path = cadets-ci
+	url = https://github.com/cadets/cadets-ci

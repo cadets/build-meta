@@ -79,36 +79,13 @@ export LLVM_PROV_MAKE=${TOP}/llvm-prov/scripts/llvm-prov-make
 
 #export LLVM_PROV_LIB=${TOP}/llvm-prov/build/${BUILD_TYPE}/lib/LLVMProv.so
 
-cd ${TOP}/freebsd
-
 echo ""
 echo "Building FreeBSD from `pwd`"
 
 LOGFILE=${LOGS}/freebsd-build.log
 echo "Logging to: ${LOGFILE}"
 echo "OBJDIR: `make -V .OBJDIR`"
-
-echo -n "Building base system... "
-time ${LLVM_PROV_MAKE} -j32 \
-	KERNCONF=CADETS WITH_INSTRUMENT_BINARIES=yes \
-	buildworld buildkernel \
-	> ${LOGFILE} \
-	|| exit 1
-echo "done."
-
-echo -n "Building release tarballs... "
-cd release
-nice ${LLVM_PROV_MAKE} \
-	-DNO_ROOT -DNOPORTS -DNOSRC -DNODOC \
-	KERNCONF=CADETS \
-	clean packagesystem \
-	>> ${LOGFILE} \
-	|| exit 1
-echo "done."
-
-echo -n "Copying release tarballs to ${TOP}/release... "
-cp `make -V .OBJDIR`/release/* ${TOP}/release/
-echo "done."
+time ${TOP}/cadets-ci/scripts/cadets-build.sh ${TOP}/freebsd > ${LOGFILE}
 
 echo ""
 echo "All done!"
